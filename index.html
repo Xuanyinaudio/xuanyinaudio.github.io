@@ -1,29 +1,427 @@
-
 <!DOCTYPE html>
 <html lang="zh">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>西藏炫音音响销售有限公司</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
-    body { font-family: "Noto Sans SC", "Noto Sans Tibetan", sans-serif; margin:0; padding:0; background:#f5f5f5; }
-    header, footer { background:#2c3e50; color:#fff; padding:20px; text-align:center; position:relative; }
-    header .branding { display:inline-flex; align-items:center; }
-    header .branding img.logo { height:50px; margin-right:10px; }
-    nav { background:#34495e; padding:10px; text-align:center; }
-    nav a { color:#fff; text-decoration:none; margin:0 15px; font-size:16px; }
-    .lang-switch { position:absolute; top:20px; right:20px; display:flex; align-items:center; }
-    .lang-switch button { margin:0 5px; padding:6px 12px; font-size:14px; cursor:pointer; }
-    .container { max-width:900px; margin:30px auto; padding:20px; background:#fff; box-shadow:0 2px 8px rgba(0,0,0,0.1); }
-    .section { margin-bottom:50px; }
-    .section h2 { font-size:28px; margin-bottom:15px; }
-    .section h3 { font-size:22px; margin-bottom:10px; }
-    .section p { line-height:1.6; margin-bottom:10px; }
-    .tibetan, .english { color:#555; font-size:1em; margin-top:5px; margin-bottom:20px; }
-    .tibetan-h2, .english-h2 { font-size:28px; }
-    .tibetan-h3, .english-h3 { font-size:22px; }
-    ul.services { columns:2; -webkit-columns:2; -moz-columns:2; list-style:none; padding:0; }
-    ul.services li { padding:6px 0; }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Noto Sans SC", "Noto Sans Tibetan", sans-serif;
+    }
+    
+    :root {
+      --primary: #1a5276;
+      --secondary: #2980b9;
+      --accent: #e74c3c;
+      --light: #ecf0f1;
+      --dark: #2c3e50;
+      --text: #34495e;
+      --shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    
+    body {
+      background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+      color: var(--text);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+    
+    /* Header Styles */
+    header {
+      background: linear-gradient(to right, var(--dark), var(--primary));
+      color: white;
+      padding: 20px 0;
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 1000;
+      box-shadow: var(--shadow);
+    }
+    
+    .header-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 20px;
+    }
+    
+    .branding {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+    
+    .logo {
+      height: 60px;
+      width: 60px;
+      background: linear-gradient(45deg, var(--accent), #e67e22);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 28px;
+      font-weight: bold;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+    
+    .company-name h1 {
+      font-size: 1.8rem;
+      margin-bottom: 5px;
+    }
+    
+    .tibetan, .english {
+      font-size: 0.9rem;
+      opacity: 0.9;
+    }
+    
+    .lang-switch {
+      display: flex;
+      gap: 15px;
+    }
+    
+    .lang-btn {
+      background: rgba(255,255,255,0.15);
+      border: none;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 30px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    
+    .lang-btn:hover {
+      background: rgba(255,255,255,0.25);
+      transform: translateY(-2px);
+    }
+    
+    /* Navigation */
+    nav {
+      background: var(--primary);
+      padding: 15px 0;
+      position: sticky;
+      top: 100px;
+      z-index: 999;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+    
+    .nav-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      padding: 0 20px;
+    }
+    
+    .nav-link {
+      color: white;
+      text-decoration: none;
+      padding: 12px 20px;
+      border-radius: 30px;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    
+    .nav-link:hover, .nav-link.active {
+      background: rgba(255,255,255,0.2);
+      transform: translateY(-3px);
+    }
+    
+    .nav-link .tibetan, .nav-link .english {
+      font-size: 0.8rem;
+      margin-top: 4px;
+    }
+    
+    /* Main Content */
+    main {
+      max-width: 1200px;
+      margin: 160px auto 50px;
+      padding: 0 20px;
+    }
+    
+    .section {
+      background: white;
+      border-radius: 15px;
+      padding: 40px;
+      margin-bottom: 40px;
+      box-shadow: var(--shadow);
+      transition: transform 0.3s ease;
+    }
+    
+    .section:hover {
+      transform: translateY(-5px);
+    }
+    
+    .section-header {
+      text-align: center;
+      margin-bottom: 30px;
+      padding-bottom: 20px;
+      border-bottom: 2px solid var(--light);
+    }
+    
+    .section-header h2 {
+      font-size: 2.2rem;
+      color: var(--primary);
+      margin-bottom: 10px;
+    }
+    
+    .tibetan-h2, .english-h2 {
+      font-size: 1.4rem;
+      color: #7f8c8d;
+      margin-bottom: 20px;
+    }
+    
+    .content-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 30px;
+    }
+    
+    .content-text {
+      padding: 20px;
+    }
+    
+    .content-text h3 {
+      font-size: 1.8rem;
+      color: var(--secondary);
+      margin-bottom: 15px;
+    }
+    
+    .tibetan-h3, .english-h3 {
+      font-size: 1.1rem;
+      color: #95a5a6;
+      margin-bottom: 20px;
+    }
+    
+    .content-text p {
+      margin-bottom: 20px;
+      font-size: 1.1rem;
+    }
+    
+    .content-image {
+      background: var(--light);
+      border-radius: 10px;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 300px;
+    }
+    
+    .content-image i {
+      font-size: 8rem;
+      color: var(--secondary);
+      opacity: 0.7;
+    }
+    
+    /* Services List */
+    .services {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+      margin-top: 30px;
+    }
+    
+    .service-card {
+      background: var(--light);
+      border-radius: 10px;
+      padding: 25px;
+      transition: all 0.3s ease;
+    }
+    
+    .service-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+    }
+    
+    .service-card h4 {
+      color: var(--primary);
+      font-size: 1.4rem;
+      margin-bottom: 15px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    
+    .service-card h4 i {
+      color: var(--accent);
+    }
+    
+    .service-card ul {
+      padding-left: 20px;
+      margin-bottom: 15px;
+    }
+    
+    .service-card ul li {
+      margin-bottom: 8px;
+    }
+    
+    /* Projects */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 25px;
+      margin-top: 30px;
+    }
+    
+    .project-card {
+      background: white;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+      transition: all 0.3s ease;
+    }
+    
+    .project-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+    }
+    
+    .project-image {
+      height: 200px;
+      background: var(--primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 5rem;
+    }
+    
+    .project-content {
+      padding: 20px;
+    }
+    
+    .project-content h4 {
+      color: var(--primary);
+      font-size: 1.3rem;
+      margin-bottom: 10px;
+    }
+    
+    .project-content p {
+      color: #7f8c8d;
+      margin-bottom: 15px;
+    }
+    
+    /* Contact */
+    .contact-info {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      margin-top: 30px;
+    }
+    
+    .contact-card {
+      background: var(--light);
+      border-radius: 10px;
+      padding: 25px;
+      text-align: center;
+    }
+    
+    .contact-card i {
+      font-size: 3rem;
+      color: var(--secondary);
+      margin-bottom: 20px;
+    }
+    
+    .contact-card h4 {
+      font-size: 1.4rem;
+      margin-bottom: 15px;
+      color: var(--primary);
+    }
+    
+    .contact-card p {
+      font-size: 1.1rem;
+      margin-bottom: 10px;
+    }
+    
+    /* Footer */
+    footer {
+      background: linear-gradient(to right, var(--dark), var(--primary));
+      color: white;
+      padding: 50px 0 20px;
+      text-align: center;
+    }
+    
+    .footer-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    
+    .footer-content {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+      margin-bottom: 40px;
+      text-align: left;
+    }
+    
+    .footer-column h4 {
+      font-size: 1.4rem;
+      margin-bottom: 20px;
+      position: relative;
+      padding-bottom: 10px;
+    }
+    
+    .footer-column h4::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 50px;
+      height: 2px;
+      background: var(--accent);
+    }
+    
+    .footer-column p {
+      margin-bottom: 15px;
+      opacity: 0.9;
+    }
+    
+    .footer-column ul {
+      list-style: none;
+    }
+    
+    .footer-column ul li {
+      margin-bottom: 10px;
+    }
+    
+    .footer-column ul li a {
+      color: white;
+      text-decoration: none;
+      opacity: 0.9;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    
+    .footer-column ul li a:hover {
+      opacity: 1;
+      transform: translateX(5px);
+    }
+    
+    .copyright {
+      padding-top: 20px;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      font-size: 0.9rem;
+      opacity: 0.8;
+    }
     
     /* Language display control */
     [lang="zh"], [lang="bo"] { display: block; }
@@ -31,137 +429,477 @@
     body.english-mode [lang="zh"], 
     body.english-mode [lang="bo"] { display: none; }
     body.english-mode [lang="en"] { display: block; }
+    
+    /* Responsive */
+    @media (max-width: 900px) {
+      .content-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .services {
+        grid-template-columns: 1fr;
+      }
+      
+      .header-container {
+        flex-direction: column;
+        gap: 20px;
+      }
+      
+      main {
+        margin-top: 200px;
+      }
+      
+      nav {
+        top: 160px;
+      }
+    }
+    
+    @media (max-width: 600px) {
+      .section {
+        padding: 25px;
+      }
+      
+      .nav-container {
+        justify-content: flex-start;
+        overflow-x: auto;
+        padding-bottom: 10px;
+      }
+      
+      .lang-btn {
+        padding: 8px 15px;
+        font-size: 0.9rem;
+      }
+    }
   </style>
 </head>
 <body>
+  <!-- Header -->
   <header>
-    <div class="branding">
-      <img src="images/logo.jpg" alt="公司logo" class="logo"/>
-      <div>
-        <h1 lang="zh">西藏炫音音响销售有限公司</h1>
-        <div class="tibetan tibetan-h2" lang="bo">བོད་ལྗོངས་ཤན་ཡིན་སྒྲ་སྙན་ཚོང་འཕྲུལ་ཁྲོམ་ར་གཉིས་པའི་ཚོང་ཁང་།</div>
-        <h1 lang="en" class="english-h2">Tibet Xuanyin Audio Sales Co., Ltd.</h1>
+    <div class="header-container">
+      <div class="branding">
+        <div class="logo">XY</div>
+        <div class="company-name">
+          <h1 lang="zh">西藏炫音音响销售有限公司</h1>
+          <div class="tibetan" lang="bo">བོད་ལྗོངས་ཤན་ཡིན་སྒྲ་སྙན་ཚོང་འཕྲུལ་ཁྲོམ་ར་གཉིས་པའི་ཚོང་ཁང་།</div>
+          <h1 lang="en" class="english">Tibet Xuanyin Audio Sales Co., Ltd.</h1>
+        </div>
+      </div>
+      
+      <div class="lang-switch">
+        <button class="lang-btn" onclick="switchLanguage('zh')">
+          <i class="fas fa-language"></i> 中文
+        </button>
+        <button class="lang-btn" onclick="switchLanguage('en')">
+          <i class="fas fa-globe"></i> English
+        </button>
       </div>
     </div>
-    <div class="lang-switch">
-      <button onclick="switchLanguage('zh')">中文</button>
-      <button onclick="switchLanguage('en')">English</button>
-    </div>
   </header>
-
+  
+  <!-- Navigation -->
   <nav>
-    <a href="#home" lang="zh">首页</a>
-    <a href="#home" lang="en" class="english">Home</a>
-    <div class="tibetan" lang="bo">མདུན་ངོས</div>
-    
-    <a href="#about-cn" lang="zh">关于炫音</a>
-    <a href="#about-cn" lang="en" class="english">About Us</a>
-    <div class="tibetan" lang="bo">ཤན་ཡིན་སྐོར།</div>
-    
-    <a href="#products" lang="zh">产品中心</a>
-    <a href="#products" lang="en" class="english">Products</a>
-    <div class="tibetan" lang="bo">ཐོན་སྐྱེད་ཀྱི་གཙོ་སྡེ།</div>
-    
-    <a href="#ktv" lang="zh">酒吧KTV</a>
-    <a href="#ktv" lang="en" class="english">Bar & KTV</a>
-    <div class="tibetan" lang="bo">ཆང་ཁང་KTV</div>
-    
-    <a href="#conference" lang="zh">会议系统</a>
-    <a href="#conference" lang="en" class="english">Conference</a>
-    <div class="tibetan" lang="bo">ཚོགས་འདུ་མ་ལག</div>
-    
-    <a href="#cases" lang="zh">工程案例</a>
-    <a href="#cases" lang="en" class="english">Projects</a>
-    <div class="tibetan" lang="bo">ལས་འཆར་དཔེ་མཚོན།</div>
-    
-    <a href="#contact" lang="zh">联系方式</a>
-    <a href="#contact" lang="en" class="english">Contact</a>
-    <div class="tibetan" lang="bo">འབྲེལ་གཏུགས་ཐབས་ལམ།</div>
+    <div class="nav-container">
+      <a href="#about" class="nav-link active">
+        <span lang="zh">关于炫音</span>
+        <span lang="en" class="english">About Us</span>
+        <span class="tibetan" lang="bo">ཤན་ཡིན་སྐོར།</span>
+      </a>
+      
+      <a href="#products" class="nav-link">
+        <span lang="zh">产品中心</span>
+        <span lang="en" class="english">Products</span>
+        <span class="tibetan" lang="bo">ཐོན་སྐྱེད་ཀྱི་གཙོ་སྡེ།</span>
+      </a>
+      
+      <a href="#ktv" class="nav-link">
+        <span lang="zh">酒吧KTV</span>
+        <span lang="en" class="english">Bar & KTV</span>
+        <span class="tibetan" lang="bo">ཆང་ཁང་KTV</span>
+      </a>
+      
+      <a href="#conference" class="nav-link">
+        <span lang="zh">会议系统</span>
+        <span lang="en" class="english">Conference</span>
+        <span class="tibetan" lang="bo">ཚོགས་འདུ་མ་ལག</span>
+      </a>
+      
+      <a href="#projects" class="nav-link">
+        <span lang="zh">工程案例</span>
+        <span lang="en" class="english">Projects</span>
+        <span class="tibetan" lang="bo">ལས་འཆར་དཔེ་མཚོན།</span>
+      </a>
+      
+      <a href="#contact" class="nav-link">
+        <span lang="zh">联系方式</span>
+        <span lang="en" class="english">Contact</span>
+        <span class="tibetan" lang="bo">འབྲེལ་གཏུགས་ཐབས་ལམ།</span>
+      </a>
+    </div>
   </nav>
-
-  <div class="container">
-    <div class="section" id="about-cn">
-      <h2 lang="zh">公司简介</h2>
-      <h2 lang="en" class="english-h2">Company Profile</h2>
-      <div class="tibetan tibetan-h2" lang="bo">ཚོང་ཁང་གི་ངོ་སྤྲོད།</div>
+  
+  <!-- Main Content -->
+  <main>
+    <!-- About Section -->
+    <section id="about" class="section">
+      <div class="section-header">
+        <h2 lang="zh">公司简介</h2>
+        <h2 lang="en" class="english-h2">Company Profile</h2>
+        <div class="tibetan tibetan-h2" lang="bo">ཚོང་ཁང་གི་ངོ་སྤྲོད།</div>
+      </div>
       
-      <p lang="zh">西藏炫音音响销售有限公司成立于2015年05月15日，注册地位于西藏拉萨市，法定代表人为任勇。公司自成立以来，始终致力于提供高品质的音视频系统解决方案，涵盖舞台灯光、酒吧KTV、朗玛厅、慢摇吧、演艺中心等多种场景。</p>
-      <p lang="en" class="english">Tibet Xuanyin Audio Sales Co., Ltd. was established on May 15, 2015, with its registered address in Lhasa, Tibet. The legal representative is Ren Yong. Since its establishment, the company has been committed to providing high-quality audio-visual system solutions for various scenarios including stage lighting, bar KTV, Langma Hall, slow shake bars, and performance centers.</p>
-      <div class="tibetan" lang="bo">བོད་ལྗོངས་ཤན་ཡིན་སྒྲ་སྙན་ཚོང་འཕྲུལ་ཁྲོམ་ར་གཉིས་པའི་ཚོང་ཁང་དེ་ཕྱི་ལོ་༢༠༡༥ལོའི་ཟླ་༥པའི་ཚེས་༡༥ལ་དབུ་བརྙེས། ཐོ་འགོད་གནས་ས་ནི་བོད་ལྗོངས་ལྷ་ས་གྲོང་ཁྱེར་ཡིན་པ་དང་། ཁྲིམས་མཐུན་གྱི་སྤྱི་ཁྱབ་པ་ནི་རེན་ཡོང་ཡིན། ཚོང་ཁང་དེ་དབུ་བརྙེས་པ་ནས་བཟུང་། གོམས་གཤིས་ཀྱི་སྒྲ་དང་བརྙན་པར་མ་ལག་གི་གྲུབ་ཐབས་སྟེ། རྩེད་རིགས་སྒྲོམ་གྱི་སྒྲ་སྒྲིག ཆང་ཁང་KTV གླིང་མ་ཁང་། གླུ་གར་ཁང་། སྒྱུ་རྩལ་ཁང་སོགས་ཀྱི་གནས་ཚུལ་སྣ་ཚོགས་ལ་ཞབས་ཞུ་གནང་བཞིན་པ་རེད།</div>
-      
-      <p lang="zh">我们拥有一支经验丰富的技术团队，专注于系统设计、设备选型、专业安装与调试，保障每个项目的音效和视觉效果达到最佳状态。同时，炫音还提供系统维护、升级与培训服务，确保客户长期稳定运行。</p>
-      <p lang="en" class="english">We have an experienced technical team specializing in system design, equipment selection, professional installation and debugging to ensure optimal audio and visual effects for each project. Xuanyin also provides system maintenance, upgrades and training services to ensure long-term stable operation for our clients.</p>
-      <div class="tibetan" lang="bo">ང་ཚོའི་དྲ་རྒྱ་ཞིབ་འཇུག་དང་། ཡོ་ཆས་གདམ་པ། ཐོག་བཙུགས་དང་ཞིབ་བཤེར་སོགས་ལ་མཁས་པའི་ལས་རིགས་ཀྱི་ཚོ་པ་ཞིག་ཡོད་པ་མ་ཟད། ལས་འཆར་རེ་རེའི་སྒྲ་དང་བརྙན་པར་གྱི་འབྲས་བུ་ཡག་ཤོས་ཐོབ་པར་བྱས་ཡོད། དུས་མཉམ་དུ་ཤན་ཡིན་གྱིས་དྲ་རྒྱ་བདག་སྐྱོང་། གོང་འཕེལ་དང་སློབ་སྦྱོང་གི་ཞབས་ཞུ་ཡང་སྤྲོད་ཀྱི་ཡོད་པས། མགྲོན་པོ་རྣམས་ཀྱིས་རིང་དུ་བར་མ་ཆད་པར་བེད་སྤྱོད་བྱེད་པར་ཁག་ཐེག་བྱས་ཡོད།</div>
-    </div>
-
-    <div class="section" id="products">
-      <h2 lang="zh">产品中心</h2>
-      <h2 lang="en" class="english-h2">Products</h2>
-      <div class="tibetan tibetan-h2" lang="bo">ཐོན་སྐྱེད་ཀྱི་གཙོ་སྡེ།</div>
-      
-      <h3 lang="zh">舞台灯光音响系统</h3>
-      <h3 lang="en" class="english-h3">Stage Lighting & Audio System</h3>
-      <div class="tibetan tibetan-h3" lang="bo">རྩེད་རིགས་སྒྲོམ་གྱི་སྒྲ་དང་འོད་སྒྲིག་མ་ལག</div>
-      
-      <p lang="zh">适用于音乐会、演唱会、剧院演出等大型舞台场景。系统包括专业音箱、功放、调音台、舞台灯光控制台与多种特效灯具，可实现声光同步控制，营造震撼舞台氛围。</p>
-      <p lang="en" class="english">Suitable for large stage scenarios such as concerts, performances, and theater shows. The system includes professional speakers, amplifiers, mixing consoles, stage lighting control consoles, and various special effect lights, enabling synchronized sound and light control to create an impressive stage atmosphere.</p>
-      <div class="tibetan" lang="bo">གླུ་དང་གཞས་ཚོགས། ཟློས་གར་སོགས་ཀྱི་རྩེད་རིགས་སྒྲོམ་ཆེན་པོའི་གནས་ཚུལ་ལ་གཏོང་བ་ཡིན། མ་ལག་དེའི་ནང་དུ་ལས་རིགས་ཀྱི་སྒྲ་སྒྲོམ། སྒྲ་ཆེད་ཀྱི་འཕར་ཆས། སྒྲ་སྒྲིག་ཐེབས། རྩེད་རིགས་སྒྲོམ་གྱི་འོད་སྒྲིག་ཐེབས་དང་འོད་ཀྱི་ཕན་ཤན་སྣ་ཚོགས་ཀྱི་མར་ཆས་སོགས་ཡོད་པ་དང་། སྒྲ་དང་འོད་ཐད་གཅིག་སྒྲིག་གིས་རྩེད་རིགས་སྒྲོམ་གྱི་གནས་ཚུལ་ཧ་ཅང་ཆེན་པོ་ཞིག་བསྐྲུན་ཐུབ།</div>
-      
-      <ul class="services">
-        <li lang="zh">线阵列扬声器：覆盖范围广，指向性强。</li>
-        <li lang="en" class="english">Line array speakers: Wide coverage, strong directivity.</li>
-        <div class="tibetan" lang="bo">ཐིག་རིམ་སྒྲ་སྒྲོམ། ཁྱབ་ཁོངས་རྒྱ་ཞིང་། དམིགས་ས་ཁོ་ནར་སྒྲ་སྤྲོད་ཐུབ།</div>
+      <div class="content-grid">
+        <div class="content-text">
+          <p lang="zh">西藏炫音音响销售有限公司成立于2015年05月15日，注册地位于西藏拉萨市，法定代表人为任勇。公司自成立以来，始终致力于提供高品质的音视频系统解决方案。</p>
+          <p lang="en" class="english">Tibet Xuanyin Audio Sales Co., Ltd. was established on May 15, 2015, with its registered address in Lhasa, Tibet. The legal representative is Ren Yong. Since its inception, the company has been committed to providing high-quality audio-visual system solutions.</p>
+          <div class="tibetan" lang="bo">བོད་ལྗོངས་ཤན་ཡིན་སྒྲ་སྙན་ཚོང་འཕྲུལ་ཁྲོམ་ར་གཉིས་པའི་ཚོང་ཁང་དེ་ཕྱི་ལོ་༢༠༡༥ལོའི་ཟླ་༥པའི་ཚེས་༡༥ལ་དབུ་བརྙེས། ཐོ་འགོད་གནས་ས་ནི་བོད་ལྗོངས་ལྷ་ས་གྲོང་ཁྱེར་ཡིན་པ་དང་། ཁྲིམས་མཐུན་གྱི་སྤྱི་ཁྱབ་པ་ནི་རེན་ཡོང་ཡིན།</div>
+          
+          <h3 lang="zh">我们的使命</h3>
+          <h3 lang="en" class="english-h3">Our Mission</h3>
+          <div class="tibetan tibetan-h3" lang="bo">ང་ཚོའི་ལས་དོན།</div>
+          
+          <p lang="zh">我们致力于通过创新的音响技术和卓越的服务，为客户打造完美的音视频体验，成为西藏地区领先的音视频解决方案提供商。</p>
+          <p lang="en" class="english">We are committed to creating perfect audio-visual experiences for our customers through innovative sound technology and excellent service, becoming the leading audio-visual solution provider in Tibet.</p>
+          <div class="tibetan" lang="bo">ང་ཚོས་གསར་གཏོད་ཀྱི་སྒྲ་སྙན་བཟོ་རིག་དང་ལེགས་ཤོས་ཀྱི་ཞབས་ཞུའི་ཐོག་ནས་མགྲོན་པོར་ཕན་པའི་སྒྲ་དང་བརྙན་པར་གྱི་ཚོར་སྣང་བསྐྲུན་དགོས་པ་དང་། བོད་ཀྱི་གནས་ཡུལ་དུ་སྒྲ་དང་བརྙན་པར་གྱི་གྲུབ་ཐབས་སྤྲོད་མཁན་གཙོ་བོ་ཞིག་ཏུ་གྱུར་པ་ཡིན།</div>
+        </div>
         
-        <li lang="zh">DMX 可控灯具：智能变色、聚光、跟踪灯。</li>
-        <li lang="en" class="english">DMX controllable lights: Intelligent color changing, spotlight, tracking lights.</li>
-        <div class="tibetan" lang="bo">DMX ཤུགས་ཀྱིས་ཁ་འཕྲོད་ཐུབ་པའི་མར་ཆས། བློ་རྣོ་ཅན་གྱི་ཚོས་གཞི་འགྱུར་བ། འོད་ཟུང་དང་། རྗེས་འཇུག་མར་མེ།</div>
+        <div class="content-image">
+          <i class="fas fa-building"></i>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Products Section -->
+    <section id="products" class="section">
+      <div class="section-header">
+        <h2 lang="zh">产品中心</h2>
+        <h2 lang="en" class="english-h2">Products</h2>
+        <div class="tibetan tibetan-h2" lang="bo">ཐོན་སྐྱེད་ཀྱི་གཙོ་སྡེ།</div>
+      </div>
+      
+      <div class="content-grid">
+        <div class="content-image">
+          <i class="fas fa-speakers"></i>
+        </div>
         
-        <li lang="zh">数字调音台：多轨输入，精细均衡与场景切换。</li>
-        <li lang="en" class="english">Digital mixing console: Multi-track input, fine equalization and scene switching.</li>
-        <div class="tibetan" lang="bo">ཨང་ཀིའི་སྒྲ་སྒྲིག་ཐེབས། ཐད་ཀ་མང་པོའི་ནང་འབྱོར་དང་། མཐུན་སྒྲིག་ཞིབ་ཚགས། གནས་ཚུལ་བར་མ་སྤོར་བ།</div>
-      </ul>
-    </div>
-
-    <div class="section" id="contact">
-      <h2 lang="zh">联系方式</h2>
-      <h2 lang="en" class="english-h2">Contact Us</h2>
-      <div class="tibetan tibetan-h2" lang="bo">འབྲེལ་གཏུགས་ཐབས་ལམ།</div>
+        <div class="content-text">
+          <h3 lang="zh">舞台灯光音响系统</h3>
+          <h3 lang="en" class="english-h3">Stage Lighting & Audio System</h3>
+          <div class="tibetan tibetan-h3" lang="bo">རྩེད་རིགས་སྒྲོམ་གྱི་སྒྲ་དང་འོད་སྒྲིག་མ་ལག</div>
+          
+          <p lang="zh">适用于音乐会、演唱会、剧院演出等大型舞台场景。系统包括专业音箱、功放、调音台、舞台灯光控制台与多种特效灯具，可实现声光同步控制，营造震撼舞台氛围。</p>
+          <p lang="en" class="english">Suitable for large stage scenarios such as concerts, performances, and theater shows. The system includes professional speakers, amplifiers, mixing consoles, stage lighting control consoles, and various special effect lights.</p>
+          <div class="tibetan" lang="bo">གླུ་དང་གཞས་ཚོགས། ཟློས་གར་སོགས་ཀྱི་རྩེད་རིགས་སྒྲོམ་ཆེན་པོའི་གནས་ཚུལ་ལ་གཏོང་བ་ཡིན། མ་ལག་དེའི་ནང་དུ་ལས་རིགས་ཀྱི་སྒྲ་སྒྲོམ། སྒྲ་ཆེད་ཀྱི་འཕར་ཆས། སྒྲ་སྒྲིག་ཐེབས། རྩེད་རིགས་སྒྲོམ་གྱི་འོད་སྒྲིག་ཐེབས་དང་འོད་ཀྱི་ཕན་ཤན་སྣ་ཚོགས་ཀྱི་མར་ཆས་སོགས་ཡོད།</div>
+          
+          <div class="services">
+            <div class="service-card">
+              <h4><i class="fas fa-sliders-h"></i> <span lang="zh">专业调音台</span><span lang="en" class="english">Mixing Console</span></h4>
+              <div class="tibetan" lang="bo">ལས་རིགས་ཀྱི་སྒྲ་སྒྲིག་ཐེབས།</div>
+              <p lang="zh">数字调音台，支持多轨输入，精细均衡与场景切换，满足专业演出需求。</p>
+              <p lang="en" class="english">Digital mixing console with multi-track inputs, fine equalization and scene switching for professional performances.</p>
+            </div>
+            
+            <div class="service-card">
+              <h4><i class="fas fa-lightbulb"></i> <span lang="zh">智能灯光系统</span><span lang="en" class="english">Smart Lighting</span></h4>
+              <div class="tibetan" lang="bo">བློ་རྣོ་ཅན་གྱི་འོད་སྒྲིག་མ་ལག</div>
+              <p lang="zh">DMX可控灯具系统，支持智能变色、聚光、跟踪灯等特效，创造震撼视觉体验。</p>
+              <p lang="en" class="english">DMX controllable lighting system with intelligent color changing, spotlight, and tracking lights for stunning visual effects.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- KTV Section -->
+    <section id="ktv" class="section">
+      <div class="section-header">
+        <h2 lang="zh">酒吧KTV解决方案</h2>
+        <h2 lang="en" class="english-h2">Bar & KTV Solutions</h2>
+        <div class="tibetan tibetan-h2" lang="bo">ཆང་ཁང་KTV གྲུབ་ཐབས།</div>
+      </div>
       
-      <p lang="zh">电话：15282569555 | 邮箱：info@xuanyinaudio.com</p>
-      <p lang="en" class="english">Tel: 15282569555 | Email: info@xuanyinaudio.com</p>
-      <div class="tibetan" lang="bo">ཁ་པར་། 15282569555 | གློག་ཡིག་། info@xuanyinaudio.com</div>
+      <div class="content-grid">
+        <div class="content-text">
+          <h3 lang="zh">专业KTV音响系统</h3>
+          <h3 lang="en" class="english-h3">Professional KTV Audio System</h3>
+          <div class="tibetan tibetan-h3" lang="bo">ལས་རིགས་ཀྱི་KTV སྒྲ་མ་ལག</div>
+          
+          <p lang="zh">我们提供全套KTV音响解决方案，包括专业卡拉OK音箱、无线麦克风、DSP数字混响和定制氛围灯光。系统支持多人同时点歌与演唱，确保娱乐体验不中断。</p>
+          <p lang="en" class="english">We provide complete KTV audio solutions including professional karaoke speakers, wireless microphones, DSP digital reverb, and custom ambient lighting. The system supports multiple people singing simultaneously.</p>
+          <div class="tibetan" lang="bo">ང་ཚོས་KTV ཡི་སྒྲ་གྲུབ་ཐབས་ཆ་ཚང་སྤྲོད་ཀྱི་ཡོད་པ་དང་། དེའི་ནང་དུ་ལས་རིགས་ཀྱི་ཀ་ར་ཨོ་ཀེའི་སྒྲ་སྒྲོམ། དབར་མེད་ཀྱི་མའི་ཀེ་ཧྥོང་། DSP ཨང་ཀིའི་སྒྲ་འདྲེས་དང་། གནས་ཚུལ་གྱི་འོད་མེ་སོགས་ཡོད།</div>
+          
+          <div class="services">
+            <div class="service-card">
+              <h4><i class="fas fa-microphone-alt"></i> <span lang="zh">无线麦克风</span><span lang="en" class="english">Wireless Mic</span></h4>
+              <div class="tibetan" lang="bo">དབར་མེད་ཀྱི་མའི་ཀེ་ཧྥོང་།</div>
+              <p lang="zh">专业级无线麦克风，抗干扰能力强，音质清晰，续航时间长，适合长时间演唱。</p>
+              <p lang="en" class="english">Professional wireless microphones with strong anti-interference, clear sound quality, and long battery life for extended singing sessions.</p>
+            </div>
+            
+            <div class="service-card">
+              <h4><i class="fas fa-music"></i> <span lang="zh">智能点歌系统</span><span lang="en" class="english">Smart Song System</span></h4>
+              <div class="tibetan" lang="bo">བློ་རྣོ་ཅན་གྱི་གླུ་འདེམས་མ་ལག</div>
+              <p lang="zh">支持手机点歌、语音点歌、分类搜索等智能功能，超过30万首歌曲库，实时更新。</p>
+              <p lang="en" class="english">Smart features include mobile song selection, voice commands, and category search with over 300,000 songs updated in real-time.</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="content-image">
+          <i class="fas fa-music"></i>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Conference Section -->
+    <section id="conference" class="section">
+      <div class="section-header">
+        <h2 lang="zh">会议系统解决方案</h2>
+        <h2 lang="en" class="english-h2">Conference Systems</h2>
+        <div class="tibetan tibetan-h2" lang="bo">ཚོགས་འདུ་མ་ལག་གྲུབ་ཐབས།</div>
+      </div>
       
-      <p lang="zh">地址：西藏自治区拉萨市城关区北京中路88号</p>
-      <p lang="en" class="english">Address: No.88 Beijing Middle Road, Chengguan District, Lhasa, Tibet</p>
-      <div class="tibetan" lang="bo">ཁ་བྱང་། བོད་རང་སྐྱོང་ལྗོངས་ལྷ་ས་གྲོང་ཁྱེར་ཁྲིན་ཀོན་ཆུས་པེ་ཅིང་ལམ་ཀྱི་ཁ་དོག་༨༨</div>
-    </div>
-  </div>
-
+      <div class="content-grid">
+        <div class="content-image">
+          <i class="fas fa-video"></i>
+        </div>
+        
+        <div class="content-text">
+          <h3 lang="zh">现代化会议系统</h3>
+          <h3 lang="en" class="english-h3">Modern Conference Systems</h3>
+          <div class="tibetan tibetan-h3" lang="bo">དེང་རབས་ཀྱི་ཚོགས་འདུ་མ་ལག</div>
+          
+          <p lang="zh">我们的会议系统涵盖多种配置：从中小型会议室到大型多功能厅，全方位扩声、高清投影、同声传译、远程视频会议与后台录播等。</p>
+          <p lang="en" class="english">Our conference systems cover various configurations from small meeting rooms to large multi-functional halls, including full-range sound, HD projection, simultaneous interpretation, video conferencing, and recording.</p>
+          <div class="tibetan" lang="bo">ང་ཚོའི་ཚོགས་འདུ་མ་ལག་གི་ནང་དུ་སྒྲིག་འགོད་སྣ་ཚོགས་ཡོད་དེ། ཚོགས་འདུ་ཁང་ཆུང་ངུ་ནས་ཆེན་པོའི་བྱེད་ནུས་མང་པོའི་ཁང་པ་བར་གྱི་སྒྲ་རྒྱ་ཆེན་པོ། བརྙན་པར་གྱི་འཕར་ཆས། སྐད་ཡིག་གཅིག་གྱུར་གྱི་སྒྲ་བསྒྱུར། རྒྱང་བསྡུམ་གྱི་བརྙན་འཕྲིན་ཚོགས་འདུ་དང་། རྒྱབ་ལོངས་ཀྱི་བརྙན་པར་ཐོན་སྒྲིག་སོགས་ཡོད།</div>
+          
+          <div class="services">
+            <div class="service-card">
+              <h4><i class="fas fa-video"></i> <span lang="zh">视频会议系统</span><span lang="en" class="english">Video Conferencing</span></h4>
+              <div class="tibetan" lang="bo">བརྙན་འཕྲིན་ཚོགས་འདུ་མ་ལག</div>
+              <p lang="zh">支持1080P高清视频会议，多机位切换，智能人脸跟踪，确保会议沟通高效流畅。</p>
+              <p lang="en" class="english">1080P HD video conferencing with multi-camera switching and intelligent face tracking for efficient communication.</p>
+            </div>
+            
+            <div class="service-card">
+              <h4><i class="fas fa-headset"></i> <span lang="zh">同声传译系统</span><span lang="en" class="english">Simultaneous Interpretation</span></h4>
+              <div class="tibetan" lang="bo">སྐད་ཡིག་གཅིག་གྱུར་གྱི་སྒྲ་བསྒྱུར་མ་ལག</div>
+              <p lang="zh">支持多语种同声传译，最多可同时支持8种语言，适合国际会议和多民族地区使用。</p>
+              <p lang="en" class="english">Supports multi-language simultaneous interpretation for up to 8 languages, suitable for international conferences and multi-ethnic regions.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Projects Section -->
+    <section id="projects" class="section">
+      <div class="section-header">
+        <h2 lang="zh">工程案例</h2>
+        <h2 lang="en" class="english-h2">Projects</h2>
+        <div class="tibetan tibetan-h2" lang="bo">ལས་འཆར་དཔེ་མཚོན།</div>
+      </div>
+      
+      <div class="projects-grid">
+        <div class="project-card">
+          <div class="project-image" style="background: linear-gradient(135deg, #1a5276, #2980b9);">
+            <i class="fas fa-theater-masks"></i>
+          </div>
+          <div class="project-content">
+            <h4 lang="zh">西藏歌剧院音响系统</h4>
+            <h4 lang="en" class="english">Tibet Opera House Audio System</h4>
+            <p lang="zh">为西藏歌剧院提供专业线阵列音响系统，显著提升剧场声学效果，获得文化部门高度评价。</p>
+            <p lang="en" class="english">Professional line array audio system for Tibet Opera House, significantly improving acoustic performance and receiving high praise.</p>
+          </div>
+        </div>
+        
+        <div class="project-card">
+          <div class="project-image" style="background: linear-gradient(135deg, #27ae60, #2ecc71);">
+            <i class="fas fa-running"></i>
+          </div>
+          <div class="project-content">
+            <h4 lang="zh">拉萨体育馆扩声系统</h4>
+            <h4 lang="en" class="english">Lhasa Stadium Sound System</h4>
+            <p lang="zh">为拉萨体育馆搭建室内外扩声系统，保障赛事转播和大型活动音响需求，系统运行稳定。</p>
+            <p lang="en" class="english">Indoor and outdoor sound system for Lhasa Stadium, ensuring stable operation for event broadcasts and large activities.</p>
+          </div>
+        </div>
+        
+        <div class="project-card">
+          <div class="project-image" style="background: linear-gradient(135deg, #8e44ad, #9b59b6);">
+            <i class="fas fa-hotel"></i>
+          </div>
+          <div class="project-content">
+            <h4 lang="zh">五星级酒店会议系统</h4>
+            <h4 lang="en" class="english">5-Star Hotel Conference System</h4>
+            <p lang="zh">为拉萨国际酒店提供全套会议系统解决方案，包括多功能厅、会议室和宴会厅的音响视频系统。</p>
+            <p lang="en" class="english">Complete conference system solution for Lhasa International Hotel including multi-function halls, meeting rooms and banquet halls.</p>
+          </div>
+        </div>
+        
+        <div class="project-card">
+          <div class="project-image" style="background: linear-gradient(135deg, #e74c3c, #e67e22);">
+            <i class="fas fa-glass-cheers"></i>
+          </div>
+          <div class="project-content">
+            <h4 lang="zh">高端酒吧音响工程</h4>
+            <h4 lang="en" class="english">Premium Bar Audio Project</h4>
+            <p lang="zh">为拉萨高端酒吧定制音响系统，结合重低音和环绕声效，打造沉浸式娱乐体验。</p>
+            <p lang="en" class="english">Custom audio system for premium Lhasa bars with bass and surround sound for immersive entertainment experience.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Contact Section -->
+    <section id="contact" class="section">
+      <div class="section-header">
+        <h2 lang="zh">联系我们</h2>
+        <h2 lang="en" class="english-h2">Contact Us</h2>
+        <div class="tibetan tibetan-h2" lang="bo">ང་ཚོ་དང་འབྲེལ་གཏུགས་པ།</div>
+      </div>
+      
+      <div class="contact-info">
+        <div class="contact-card">
+          <i class="fas fa-map-marker-alt"></i>
+          <h4 lang="zh">公司地址</h4>
+          <h4 lang="en" class="english">Address</h4>
+          <p lang="zh">西藏自治区拉萨市城关区北京中路88号</p>
+          <p lang="en" class="english">No.88 Beijing Middle Road, Chengguan District, Lhasa, Tibet</p>
+          <div class="tibetan" lang="bo">ཁ་བྱང་། བོད་རང་སྐྱོང་ལྗོངས་ལྷ་ས་གྲོང་ཁྱེར་ཁྲིན་ཀོན་ཆུས་པེ་ཅིང་ལམ་ཀྱི་ཁ་དོག་༨༨</div>
+        </div>
+        
+        <div class="contact-card">
+          <i class="fas fa-phone-alt"></i>
+          <h4 lang="zh">联系电话</h4>
+          <h4 lang="en" class="english">Phone</h4>
+          <p>15282569555</p>
+          <p>0891-6322888</p>
+        </div>
+        
+        <div class="contact-card">
+          <i class="fas fa-envelope"></i>
+          <h4 lang="zh">电子邮箱</h4>
+          <h4 lang="en" class="english">Email</h4>
+          <p>info@xuanyinaudio.com</p>
+          <p>support@xuanyinaudio.com</p>
+        </div>
+        
+        <div class="contact-card">
+          <i class="fas fa-clock"></i>
+          <h4 lang="zh">营业时间</h4>
+          <h4 lang="en" class="english">Business Hours</h4>
+          <p lang="zh">周一至周六: 9:00 - 18:00</p>
+          <p lang="en" class="english">Mon-Sat: 9:00 AM - 6:00 PM</p>
+          <p lang="zh">周日: 休息</p>
+          <p lang="en" class="english">Sunday: Closed</p>
+        </div>
+      </div>
+    </section>
+  </main>
+  
+  <!-- Footer -->
   <footer>
-    <div lang="zh">&copy; 2025 西藏炫音音响销售有限公司 - 版权所有</div>
-    <div lang="en" class="english">&copy; 2025 Tibet Xuanyin Audio Sales Co., Ltd. - All Rights Reserved</div>
-    <div class="tibetan tibetan-h3" lang="bo">© ༢༠༢༥ བོད་ལྗོངས་ཤན་ཡིན་སྒྲ་སྙན་ཚོང་འཕྲུལ་ཁྲོམ་ར་གཉིས་པའི་ཚོང་ཁང་། - ཁྱད་མཚར་ཡོད་པའི་ཆ་རྐྱེན་ཡོངས་ལ་ཉར་ཚགས་བྱས་པ།</div>
+    <div class="footer-container">
+      <div class="footer-content">
+        <div class="footer-column">
+          <h4 lang="zh">关于炫音</h4>
+          <h4 lang="en" class="english">About Xuanyin</h4>
+          <p lang="zh">西藏炫音音响销售有限公司成立于2015年，是西藏地区领先的音视频解决方案提供商，致力于为客户提供高品质的音视频系统设计、安装和维护服务。</p>
+          <p lang="en" class="english">Established in 2015, Tibet Xuanyin Audio is the leading audio-visual solution provider in Tibet, dedicated to providing high-quality system design, installation and maintenance services.</p>
+        </div>
+        
+        <div class="footer-column">
+          <h4 lang="zh">我们的服务</h4>
+          <h4 lang="en" class="english">Our Services</h4>
+          <ul>
+            <li><a href="#"><i class="fas fa-chevron-right"></i> <span lang="zh">专业音响系统设计</span><span lang="en" class="english">Professional Audio System Design</span></a></li>
+            <li><a href="#"><i class="fas fa-chevron-right"></i> <span lang="zh">灯光系统安装</span><span lang="en" class="english">Lighting System Installation</span></a></li>
+            <li><a href="#"><i class="fas fa-chevron-right"></i> <span lang="zh">KTV工程解决方案</span><span lang="en" class="english">KTV Engineering Solutions</span></a></li>
+            <li><a href="#"><i class="fas fa-chevron-right"></i> <span lang="zh">会议系统集成</span><span lang="en" class="english">Conference System Integration</span></a></li>
+            <li><a href="#"><i class="fas fa-chevron-right"></i> <span lang="zh">系统维护与升级</span><span lang="en" class="english">System Maintenance & Upgrade</span></a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-column">
+          <h4 lang="zh">快速链接</h4>
+          <h4 lang="en" class="english">Quick Links</h4>
+          <ul>
+            <li><a href="#about"><i class="fas fa-chevron-right"></i> <span lang="zh">关于我们</span><span lang="en" class="english">About Us</span></a></li>
+            <li><a href="#products"><i class="fas fa-chevron-right"></i> <span lang="zh">产品中心</span><span lang="en" class="english">Products</span></a></li>
+            <li><a href="#ktv"><i class="fas fa-chevron-right"></i> <span lang="zh">酒吧KTV</span><span lang="en" class="english">Bar & KTV</span></a></li>
+            <li><a href="#conference"><i class="fas fa-chevron-right"></i> <span lang="zh">会议系统</span><span lang="en" class="english">Conference Systems</span></a></li>
+            <li><a href="#contact"><i class="fas fa-chevron-right"></i> <span lang="zh">联系我们</span><span lang="en" class="english">Contact Us</span></a></li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="copyright">
+        <p lang="zh">&copy; 2025 西藏炫音音响销售有限公司 - 版权所有</p>
+        <p lang="en" class="english">&copy; 2025 Tibet Xuanyin Audio Sales Co., Ltd. - All Rights Reserved</p>
+        <div class="tibetan" lang="bo">© ༢༠༢༥ བོད་ལྗོངས་ཤན་ཡིན་སྒྲ་སྙན་ཚོང་འཕྲུལ་ཁྲོམ་ར་གཉིས་པའི་ཚོང་ཁང་། - ཁྱད་མཚར་ཡོད་པའི་ཆ་རྐྱེན་ཡོངས་ལ་ཉར་ཚགས་བྱས་པ།</div>
+      </div>
+    </div>
   </footer>
-
+  
   <script>
     function switchLanguage(lang) {
       // Set body class for CSS control
       document.body.className = lang === 'en' ? 'english-mode' : '';
       
-      // You can also use this for additional JavaScript control
-      console.log('Switched to language: ' + lang);
+      // Update active nav link
+      document.querySelectorAll('.nav-link').forEach(link => {
+        link.classList.remove('active');
+      });
+      document.querySelector(`.nav-link[href="#${window.location.hash.substring(1)}"]`).classList.add('active');
       
-      // Store language preference in localStorage
+      // Store language preference
       localStorage.setItem('preferredLanguage', lang);
     }
     
     // Check for saved language preference
-    const savedLang = localStorage.getItem('preferredLanguage');
-    if(savedLang) {
-      switchLanguage(savedLang);
-    }
+    document.addEventListener('DOMContentLoaded', function() {
+      const savedLang = localStorage.getItem('preferredLanguage');
+      if(savedLang) {
+        switchLanguage(savedLang);
+      }
+      
+      // Update active nav link based on hash
+      function updateActiveNav() {
+        document.querySelectorAll('.nav-link').forEach(link => {
+          link.classList.remove('active');
+        });
+        const currentHash = window.location.hash.substring(1);
+        if(currentHash) {
+          document.querySelector(`.nav-link[href="#${currentHash}"]`).classList.add('active');
+        } else {
+          document.querySelector(`.nav-link[href="#about"]`).classList.add('active');
+        }
+      }
+      
+      // Initial update
+      updateActiveNav();
+      
+      // Update on hash change
+      window.addEventListener('hashchange', updateActiveNav);
+      
+      // Smooth scrolling
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+          e.preventDefault();
+          
+          const targetId = this.getAttribute('href');
+          if(targetId === '#') return;
+          
+          const targetElement = document.querySelector(targetId);
+          if(targetElement) {
+            window.scrollTo({
+              top: targetElement.offsetTop - 140,
+              behavior: 'smooth'
+            });
+          }
+        });
+      });
+    });
   </script>
 </body>
 </html>
-```
-
